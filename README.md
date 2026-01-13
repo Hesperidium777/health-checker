@@ -14,7 +14,7 @@
 
 ```bash
 # Клонируйте репозиторий
-git clone https://github.com/yourusername/health-checker.git
+git clone https://github.com/Hesperidium777/health-checker.git
 cd health-checker
 
 # Соберите проект
