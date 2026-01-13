@@ -1,2 +1,24 @@
 # health-checker
-Simple cli health checker for websites
+
+Простой инструмент для проверки доступности веб-сайтов, написанный на Go.
+
+## Особенности
+
+- Многопоточная проверка URL
+- Поддержка повторных попыток
+- Различные форматы вывода (таблица, JSON, CSV)
+- Ограничение количества одновременных запросов
+- Подсчет статистики
+
+## Установка
+
+```bash
+# Клонируйте репозиторий
+git clone https://github.com/yourusername/health-checker.git
+cd health-checker
+
+# Соберите проект
+go build -o health-checker
+
+# Или установите глобально
+go install
