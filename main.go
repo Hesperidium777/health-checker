@@ -27,7 +27,7 @@ func main() {
 			fmt.Printf("Ошибка чтения файла: %v\n", err)
 			os.Exit(1)
 		}
-		urls = parseURLs(string(data))
+		urls = ParseURLs(string(data))
 	} else {
 		urls = flag.Args()
 	}
@@ -69,4 +69,19 @@ func main() {
 
 	// Выводим статистику
 	checker.PrintStats(results)
+}
+
+// parseURLs парсит URL из строки
+func ParseURLs(data string) []string {
+	lines := strings.Split(data, "\n")
+	urls := make([]string, 0, len(lines))
+
+	for _, line := range lines {
+		line = strings.TrimSpace(line)
+		if line != "" && !strings.HasPrefix(line, "#") {
+			urls = append(urls, line)
+		}
+	}
+
+	return urls
 }

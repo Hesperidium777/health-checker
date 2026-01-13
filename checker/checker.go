@@ -75,7 +75,7 @@ func NewHealthChecker(config *Config) *HealthChecker {
 func (hc *HealthChecker) checkURL(ctx context.Context, url string) Result {
 	start := time.Now()
 	var lastErr error
-	var statusCode int
+	//var statusCode int
 
 	// Пытаемся выполнить запрос с повторами
 	for attempt := 0; attempt <= hc.config.Retries; attempt++ {
@@ -107,7 +107,7 @@ func (hc *HealthChecker) checkURL(ctx context.Context, url string) Result {
 
 		// Читаем немного тела ответа для подтверждения
 		io.CopyN(io.Discard, resp.Body, 4096)
-		statusCode = resp.StatusCode
+		//	statusCode = resp.StatusCode
 
 		// Определяем статус на основе кода ответа
 		status := "success"
@@ -302,19 +302,4 @@ func PrintStats(results []Result) {
 	fmt.Printf("  Среднее время: %v\n", avgTime.Round(time.Millisecond))
 	fmt.Printf("  Общее время: %v\n", totalTime.Round(time.Millisecond))
 	fmt.Printf("  Успешность: %.1f%%\n", float64(successCount)/float64(len(results))*100)
-}
-
-// parseURLs парсит URL из строки
-func parseURLs(data string) []string {
-	lines := strings.Split(data, "\n")
-	urls := make([]string, 0, len(lines))
-
-	for _, line := range lines {
-		line = strings.TrimSpace(line)
-		if line != "" && !strings.HasPrefix(line, "#") {
-			urls = append(urls, line)
-		}
-	}
-
-	return urls
 }
