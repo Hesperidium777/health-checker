@@ -1,5 +1,0 @@
-https://google.com
-https://github.com
-https://stackoverflow.com
-# Комментарии игнорируются
-example.com  # Будет автоматически добавлен https://
